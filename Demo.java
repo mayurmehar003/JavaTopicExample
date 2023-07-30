@@ -1,27 +1,39 @@
 package day1;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-class Demo
-{
-public static void findfile() throws IOException
-{
-	File file=new File("mayur.txt");
-	FileInputStream f1=new FileInputStream(file);
-}
-
-public static void main(String[] args)
-{
-	try {
-	findfile();
-	}
-	catch(IOException e)
-	{
-		System.out.println("handled");
+class salaryException extends RuntimeException {
+	@Override
+	public String getMessage() {
+		return "salary Can not be Negative";
 	}
 
 }
 
+class Employee {
+	String name;
+	int sal;
+
+	Employee(String name, int sal) {
+		this.name = name;
+
+		if (sal > 0) {
+			this.sal = sal;
+		} else {
+			throw new salaryException();
+		}
+
+	}
+	
+	public static void main(String[] args) {
+		Employee e1=new Employee("mayur", 50);
+		
+		
+		Employee e2=new Employee("akash", -50);
+		
+		
+		System.out.println(e1);
+		
+		System.out.println(e12);
+		
+	
+		
+	}
 }
